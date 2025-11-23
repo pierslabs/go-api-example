@@ -12,8 +12,7 @@ func TestMiddleware() gin.HandlerFunc {
 		logger, _ := zap.NewProduction()
 
 		defer logger.Sync()
-		logger.Info("failed to fetch URL",
-
+		logger.Info("TestMiddleware executed",
 			zap.String("url", c.Request.URL.Path),
 			zap.Int("attempt", 3),
 			zap.Duration("backoff", time.Second),

@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"simple-go-api/internal/infrastructure/middlewares"
 	application "simple-go-api/internal/users/application/use_cases"
 
 	"github.com/gin-gonic/gin"
@@ -51,6 +52,6 @@ func (h *UserHttpHandler) CreateUserHandler(c *gin.Context) {
 func (h *UserHttpHandler) RegisterRoutes(rg *gin.RouterGroup) {
 	usersGroup := rg.Group("/users")
 	{
-		usersGroup.POST("", h.CreateUserHandler)
+		usersGroup.POST("", middlewares.TestMiddleware(), h.CreateUserHandler)
 	}
 }
